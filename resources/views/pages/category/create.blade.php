@@ -27,17 +27,18 @@
           </div>
           {{-- awal form --}}
           <div style="padding:20px">
-            <form>
+            <form method="POST" action="{{ route('category.store') }}">
+              @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                          <input type="text" placeholder="Nama Kategori" class="form-control"/>
+                          <input type="text" name="category_name" placeholder="Nama Kategori" class="form-control"/>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-secondary btn-block">Simpan</button>
+                        <button type="submit" class="btn btn-secondary btn-block">Simpan</button>
                     </div>
                 </div>
               </form>

@@ -39,13 +39,16 @@ Route::group(['middleware' => 'auth'], function () {
 	// outlet
 	Route::get('pages/outlet/index', [OutletController::class, 'index'])->name('outlet.index');
 	Route::get('pages/outlet/create', [OutletController::class, 'create'])->name('outlet.create');
+	Route::post('pages/outlet/store', [OutletController::class, 'store'])->name('outlet.store');
 
 	// product
 	Route::get('pages/product/index', [ProductController::class, 'index'])->name('product.index');
 	Route::get('pages/product/create', [ProductController::class, 'create'])->name('product.create');
+	Route::post('pages/product/store', [ProductController::class, 'store'])->name('product.store');
 
 	// Category
 	Route::get('pages/category/index', [CategoryController::class, 'index'])->name('category.index');
 	Route::get('pages/category/create', [CategoryController::class, 'create'])->name('category.create');
+	Route::post('pages/category/store', [CategoryController::class, 'store'])->name('category.store');
 });
 

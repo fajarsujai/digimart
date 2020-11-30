@@ -27,41 +27,49 @@
           </div>
           {{-- awal form --}}
           <div style="padding:20px">
-            <form>
+            <form method="POST" action="{{ route('outlet.store') }}" enctype="multipart/form-data">
+              @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" placeholder="Nama Outlet" class="form-control"/>
+                          <input type="text" name="outlet_name" placeholder="Nama Outlet" class="form-control"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" placeholder="Phone" class="form-control"/>
+                            <input type="text" name="outlet_phone" placeholder="Phone" class="form-control"/>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" placeholder="Link Ig" class="form-control"/>
+                          <input type="text" name="link_ig" placeholder="Link Ig" class="form-control"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" placeholder="Link Wa" class="form-control"/>
+                            <input type="text" name="link_wa" placeholder="Link Wa" class="form-control"/>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" placeholder="Nama Pemilik" class="form-control"/>
+                          <input type="text" name="outlet_owner" placeholder="Nama Pemilik" class="form-control"/>
                         </div>
+                    </div>                    
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="file" name="outlet_image" class="form-control-file" id="">
+                      </div>
                     </div>                    
                 </div>
                 <div class="row">
+              </div>
+                <div class="row">
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-secondary btn-block">Simpan</button>
+                        <button type="submit" class="btn btn-secondary btn-block">Simpan</button>
                     </div>
                 </div>
               </form>

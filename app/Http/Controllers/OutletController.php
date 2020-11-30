@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outlet;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class OutletController extends Controller
@@ -34,7 +36,34 @@ class OutletController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [			
+        
+        ]);
+        
+        $param = $request->all();
+        $data = [
+            'outlet_name'   => $param['outlet_name'],
+            'slug'          => Str::slug($param['outlet_name']),
+            'outlet_phone'  => $param['outlet_phone'],
+            'outlet_owner'  => $param['outlet_owner'],
+            'link_wa'       => $param['link_wa'],
+            'link_ig'       => $param['link_ig']
+        ];
+
+        $file_photo = $request->file('outlet_image');
+        $str=rand(); 
+        $random_str = md5($str);
+        if ($file_photo) {
+            $filename = $random_str.$file_photo->getClientOriginalName();
+            $data['outlet_image'] = $filename; // Update field photo
+
+            $proses = $file_photo->move('images/outlet', $filename);
+        } else {
+            dd("tidak ada image");
+        }
+
+        Outlet::create($data);
+        return redirect()->back()->with(['status' => 'Data Berhasil Disimpan']);
     }
 
     /**

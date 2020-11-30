@@ -27,29 +27,28 @@
           </div>
           {{-- awal form --}}
           <div style="padding:20px">
-            <form>
-                <div class="row">
+            <form method="post" action="{{ route('product.store') }}" enctype="multipart/form-data">
+              @csrf  
+              <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="exampleFormControlSelect1">Pilih Nama Pemilik</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                          <option>~ Pilih Nama Outlet ~</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                        <label for="outlet">Pilih Nama Pemilik</label>
+                        <select class="form-control" id="outlet" name="outlet_id">
+                          <option selected disabled>~ Pilih Nama Outlet ~</option>
+                          @foreach ($outlets as $item)                              
+                            <option value="{{ $item->id }}">{{ $item->outlet_name }}</option> 
+                          @endforeach
                         </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="exampleFormControlSelect1">Pilih Kategori</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <label for="category">Pilih Kategori</label>
+                        <select class="form-control" id="category" name="product_category_id">
                           <option>~ Pilih Kategori ~</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                          @foreach ($categories as $item)                              
+                            <option value={{ $item->id }}>{{ $item->category_name }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
@@ -57,7 +56,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" placeholder="Write a large text here ..."></textarea>
+                          <textarea class="form-control" id="product_description" name="product_description" rows="8" placeholder="Write a large text here ..."></textarea>
                         </div>
                     </div>                    
                 </div>
@@ -65,7 +64,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile">
+                            <input type="file" name="product_image[]" class="custom-file-input" id="product_image" multiple>
                             <label class="custom-file-label" for="customFile">Choose file</label>
                           </div>
                         </div>
@@ -73,7 +72,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-secondary btn-block">Simpan</button>
+                        <button type="submit" class="btn btn-secondary btn-block">Simpan</button>
                     </div>
                 </div>
               </form>

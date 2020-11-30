@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -34,7 +35,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [			
+        
+        ]);
+        
+        $param = $request->all();
+        $data = [
+            'category_name'   => $param['category_name'],
+        ];
+
+        ProductCategory::create($data);
+        return redirect()->back()->with(['status' => 'Data Berhasil Disimpan']);
+    
     }
 
     /**
