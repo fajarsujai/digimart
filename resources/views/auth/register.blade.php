@@ -1,5 +1,9 @@
 @extends('layouts.app', ['class' => 'bg-default'])
 
+@section('title')
+Digimart | Register Page
+@endsection
+
 @section('content')
     @include('layouts.headers.guest')
 

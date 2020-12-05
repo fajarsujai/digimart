@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
+
+@section('title')
+Digimart | Confirm Page
+@endsection
 
 @section('content')
 <div class="container">

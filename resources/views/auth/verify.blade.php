@@ -1,5 +1,9 @@
 @extends('layouts.app', ['class' => 'bg-default'])
 
+@section('title')
+Digimart | Verify Page
+@endsection
+
 @section('content')
     @include('layouts.headers.guest')
 
@@ -17,9 +21,9 @@
                                     {{ __('A fresh verification link has been sent to your email address.') }}
                                 </div>
                             @endif
-                            
+
                             {{ __('Before proceeding, please check your email for a verification link.') }}
-                            
+
                             @if (Route::has('verification.resend'))
                                 {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>
                             @endif
