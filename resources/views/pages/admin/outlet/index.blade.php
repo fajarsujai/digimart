@@ -1,7 +1,7 @@
 @extends('layouts.admin.app', ['activePage' => 'table', 'titlePage' => __('Tabel Daftar Paket')])
 
 @section('title')
-Digimart | Outlet Page
+DEEANTAR | Outlet Page
 @endsection
 
 @section('content')
@@ -48,7 +48,7 @@ Digimart | Outlet Page
                 @php
                     $i=1;
                 @endphp
-                @foreach ($data as $item)                    
+                @foreach ($data as $item)
                   <tr>
                     <td>{{ $i }}</td>
                     <td>{{ $item->outlet_name }}</td>
@@ -56,7 +56,7 @@ Digimart | Outlet Page
                     <td>{{ $item->outlet_owner }}</td>
                     <td>{{ $item->note }}</td>
                     <td>
-                    <a href="{{ "https://api.whatsapp.com/send?phone=+".$item->outlet_phone."&text=".urlencode($item->note) }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info">WA</a> 
+                    <a href="{{ "https://api.whatsapp.com/send?phone=+".$item->outlet_phone."&text=".urlencode($item->note) }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info">WA</a>
                     </td>
                     <td>{{ $item->updated_at }}</td>
                     <td>

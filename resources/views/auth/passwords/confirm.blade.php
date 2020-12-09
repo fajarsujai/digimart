@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title')
-Digimart | Confirm Page
+DEEANTAR | Confirm Page
 @endsection
 
 @section('content')

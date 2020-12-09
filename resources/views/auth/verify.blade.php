@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'bg-default'])
 
 @section('title')
-Digimart | Verify Page
+DEEANTAR | Verify Page
 @endsection
 
 @section('content')

@@ -14,7 +14,7 @@
                       </header>
                       <footer>
                         <p><strong>Ciasem Subang</strong></p>
-                        <p>Email: <a href='mailto:support@store.com'>hello@digimart.com</a></p>
+                        <p>Email: <a href='mailto:support@store.com'>hello@DEEANTAR.com</a></p>
                         <p>Phone: 0821-3031-4423</p>
                       </footer>
                     </aside>
@@ -83,7 +83,7 @@
           <div class="ps-container">
             <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                    <p>&copy; <a href="#">DIGIMART</a>, Inc. All rights Resevered.</p>
+                    <p>&copy; <a href="#">DEEANTAR</a>, Inc. All rights Resevered.</p>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                     <ul class="ps-social">

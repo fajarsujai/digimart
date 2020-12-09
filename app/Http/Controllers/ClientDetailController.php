@@ -15,16 +15,9 @@ class ClientDetailController extends Controller
                             FROM outlets o
                             LEFT JOIN products p ON o.id=p.outlet_id
                             LEFT JOIN product_categories c ON p.product_category_id=c.id
-                            WHERE o.slug = '".$slug."'
+                            WHERE o.slug = '" . $slug . "'
          ");
-        $data = $data[0];        
-        return view('pages.detail-toko',['data'=>$data]);
+        $data = $data[0];
+        return view('pages.detail-toko', ['data' => $data]);
     }
-
-    // public function outletDetail($slug)
-    // {
-    //     $outlet = Outlet::where([['slug', $slug])->first();
-    //     $otlets = Outlet::where([['id', '!=', $outlet->id])->get();
-    //     return view('pages.detail-toko', compact('outlet', 'outlets'));
-    // }
 }

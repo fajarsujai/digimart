@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title')
-Digimart | Dashboard Page
+DEEANTAR | Dashboard Page
 @endsection
 
 @section('content')

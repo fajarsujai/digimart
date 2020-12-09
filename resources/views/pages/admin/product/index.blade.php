@@ -1,7 +1,7 @@
 @extends('layouts.admin.app', ['activePage' => 'table', 'titlePage' => __('Tabel Daftar Paket')])
 
 @section('title')
-Digimart | Product Page
+DEEANTAR | Product Page
 @endsection
 
 @section('content')
@@ -46,16 +46,16 @@ Digimart | Product Page
                 @php
                     $i=1;
                 @endphp
-                @foreach ($data as $item)    
+                @foreach ($data as $item)
                   <tr>
                     <td>{{ $i }}</td>
                     <td>{{ $item->outlet_name }}</td>
                     <td>{{ $item->category_name }}</td>
                     <td>{{ $item->product_description }}</td>
                     @php
-                        $images = explode(",",$item->product_images);                        
+                        $images = explode(",",$item->product_images);
                     @endphp
-                    <td>{{ count($images)." Item Gambar" }}</td>                        
+                    <td>{{ count($images)." Item Gambar" }}</td>
                       {{-- @foreach ($images as $value)                       --}}
                         {{-- <img src="{{url('backend/images/products/'.$value)}}" height="128" width="128" style="padding:10px; margin:20px;">  --}}
                       {{-- @endforeach --}}

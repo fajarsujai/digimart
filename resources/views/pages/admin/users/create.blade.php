@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title')
-Digimart | Create User Page
+DEEANTAR | Create User Page
 @endsection
 
 @section('content')

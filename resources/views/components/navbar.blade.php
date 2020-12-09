@@ -37,9 +37,9 @@
                         <div class="mega-column">
                           <h4 class="mega-heading">Sayuran</h4>
                           <ul class="mega-item">
-                            <li><a href="#">Toko A</a></li>
-                            <li><a href="#">Toko B</a></li>
-                            <li><a href="#">Toko C</a></li>
+                              @foreach ($outlets as $item)
+                              <li><a href="{{ url('detail-toko/'.$item->slug)}}">{{ $item->outlet_name }}</a></li>
+                              @endforeach
                           </ul>
                         </div>
                         <div class="mega-column">
@@ -65,7 +65,7 @@
                       </div>
                     </div>
                   </li>
-                  <li class="menu-item"><a href="about.html">Tentang Kami</a></li>
+                  <li class="menu-item"><a href="{{ route('tentang-kami') }}">Tentang Kami</a></li>
                 </ul>
           </div>
           <div class="navigation__column right">

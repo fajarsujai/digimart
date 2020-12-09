@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Digimart | Tentang Kami
+DEEANTAR | Tentang Kami
 @endsection
 
 @section('content')
@@ -74,7 +74,7 @@ Digimart | Tentang Kami
         </div>
       </div>
       <div class="ps-home-contact">
-        <div id="contact-map" data-address="Pasar Ciasem Subang" data-title="Digimart" data-zoom="17"></div>
+        <div id="contact-map" data-address="Pasar Ciasem Subang" data-title="DEEANTAR" data-zoom="17"></div>
         <div class="ps-home-contact__form">
           <header>
             <h3>Hubungi Kami</h3>

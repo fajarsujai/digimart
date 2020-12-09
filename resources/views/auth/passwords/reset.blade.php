@@ -1,7 +1,7 @@
 @extends('layouts.admin.app', ['class' => 'bg-default'])
 
 @section('title')
-Digimart | Reset Page
+DEEANTAR | Reset Page
 @endsection
 
 @section('content')

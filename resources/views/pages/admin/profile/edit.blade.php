@@ -1,7 +1,7 @@
 @extends('layouts.admin.app', ['title' => __('User Profile')])
 
 @section('title')
-Digimart | Edit Profil Page
+DEEANTAR | Edit Profil Page
 @endsection
 
 @section('content')
