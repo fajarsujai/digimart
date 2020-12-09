@@ -37,9 +37,9 @@
                         <div class="mega-column">
                           <h4 class="mega-heading">Sayuran</h4>
                           <ul class="mega-item">
-                              @foreach ($outlets as $item)
-                              <li><a href="{{ url('detail-toko/'.$item->slug)}}">{{ $item->outlet_name }}</a></li>
-                              @endforeach
+                            <li><a href="#">Toko A</a></li>
+                            <li><a href="#">Toko B</a></li>
+                            <li><a href="#">Toko C</a></li>
                           </ul>
                         </div>
                         <div class="mega-column">

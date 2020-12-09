@@ -6,7 +6,7 @@ DEEANTAR | Beranda
 
 @section('content')
 
-    <x-navbar :outlets="$outlets">
+    <x-navbar>
     </x-navbar>
     <x-headline></x-headline>
     <x-hero></x-hero>
