@@ -36,10 +36,23 @@ Digimart | Category Page
                 <tr>
                   <th>No</th>
                   <th scope="col" class="sort" data-sort="name">Nama Kategori</th>
+                  <th>Updated at</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
-              <tbody class="list">
+              <tbody class="list">  
+                @php $i=1; @endphp
+                  @foreach($data as $key => $value)                                        
+                  <tr>
+                      <th>{{ $i }}</th>
+                      <th>{{ $value->category_name }}</th>
+                      <th>{{ $value->updated_at }}</th>
+                      <th>
+                        <a href="" class="btn btn-warning">Edit</a>
+                      </th>
+                    </tr>
+                    @php $i++; @endphp
+                  @endforeach
               </tbody>
             </table>
           </div>

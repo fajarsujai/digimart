@@ -34,13 +34,39 @@ Digimart | Product Page
             <table class="table align-items-center table-dark table-flush">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col" class="sort" data-sort="name">Nama Outlet</th>
-                  <th scope="col" class="sort" data-sort="budget">Phone</th>
-                  <th scope="col" class="sort" data-sort="status">Owner</th>
+                  <th>No</th>
+                  <th scope="col">Outlet</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Deskripsi Produk</th>
+                  <th scope="col">Gambar</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody class="list">
+                @php
+                    $i=1;
+                @endphp
+                @foreach ($data as $item)    
+                  <tr>
+                    <td>{{ $i }}</td>
+                    <td>{{ $item->outlet_name }}</td>
+                    <td>{{ $item->category_name }}</td>
+                    <td>{{ $item->product_description }}</td>
+                    @php
+                        $images = explode(",",$item->product_images);                        
+                    @endphp
+                    <td>{{ count($images)." Item Gambar" }}</td>                        
+                      {{-- @foreach ($images as $value)                       --}}
+                        {{-- <img src="{{url('backend/images/products/'.$value)}}" height="128" width="128" style="padding:10px; margin:20px;">  --}}
+                      {{-- @endforeach --}}
+                    <td>
+                      <a href="{{ route('product.edit',$item->id) }}" class="btn btn-warning">Edit</a>
+                    </td>
+                    </tr>
+                  @php
+                      $i++
+                  @endphp
+                @endforeach
               </tbody>
             </table>
           </div>

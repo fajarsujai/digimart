@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')
     ->name('home');
 
-Route::get('/detail-toko', 'ClientDetailController@outletDetail');
+Route::get('/detail-toko/{slug}', 'ClientDetailController@outletDetail');
 Route::get('/tentang-kami', 'HomeController@about')->name('tentang-kami');
 
 Auth::routes();
@@ -21,11 +21,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pages/admin/outlet/index', 'OutletController@index')->name('outlet.index');
     Route::get('pages/admin/outlet/create', 'OutletController@create')->name('outlet.create');
     Route::post('pages/admin/outlet/store', 'OutletController@store')->name('outlet.store');
+    Route::get('pages/admin/outlet/edit/{slug}', 'OutletController@edit')->name('outlet.edit');
+    Route::patch('pages/admin/outlet/update/{slug}', 'OutletController@update')->name('outlet.update');
 
     // product
     Route::get('pages/admin/product/index', 'ProductController@index')->name('product.index');
     Route::get('pages/admin/product/create', 'ProductController@create')->name('product.create');
     Route::post('pages/admin/product/store', 'ProductController@store')->name('product.store');
+    Route::get('pages/admin/product/edit/{id}', 'ProductController@edit')->name('product.edit');
+    Route::patch('pages/admin/product/update/{id}', 'ProductController@update')->name('product.update');
 
     // Category
     Route::get('pages/admin/category/index', 'CategoryController@index')->name('category.index');

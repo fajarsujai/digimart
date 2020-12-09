@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Outlet;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+
 
 class OutletController extends Controller
 {
@@ -15,7 +18,10 @@ class OutletController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.outlet.index');
+        $data = DB::select(" SELECT o.outlet_name, o.outlet_phone, o.slug, o.outlet_owner, o.note ,o.link_wa, o.updated_at 
+                            FROM outlets o order by o.id desc
+                    ");
+        return view('pages.admin.outlet.index', ['data' => $data]);
     }
 
     /**
@@ -44,6 +50,7 @@ class OutletController extends Controller
             'slug'          => Str::slug($param['outlet_name']),
             'outlet_phone'  => $param['outlet_phone'],
             'outlet_owner'  => $param['outlet_owner'],
+            'note'  => $param['note'],
             'link_wa'       => $param['link_wa'],
             'link_ig'       => $param['link_ig']
         ];
@@ -55,7 +62,7 @@ class OutletController extends Controller
             $filename = $random_str . $file_photo->getClientOriginalName();
             $data['outlet_image'] = $filename; // Update field photo
 
-            $proses = $file_photo->move('images/outlet', $filename);
+            $file_photo->move('images/outlet', $filename);
         } else {
             dd("tidak ada image");
         }
@@ -70,7 +77,7 @@ class OutletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
     }
@@ -81,9 +88,14 @@ class OutletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $data = DB::select(" SELECT o.outlet_name, o.outlet_phone, o.slug, o.outlet_owner, o.note ,o.link_wa, o.updated_at, o.link_ig 
+                            FROM outlets o
+                            WHERE o.slug='".$slug."' 
+                    ");
+        $data = $data[0];
+        return view('pages.admin.outlet.edit', ['data' => $data]);
     }
 
     /**
@@ -93,9 +105,38 @@ class OutletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        
+        $param = $request->all();
+
+        $data = [
+            'outlet_name'    => $param['outlet_name'],
+            'slug'           => Str::slug($param['outlet_name']),            
+            'outlet_phone'   => $param['outlet_phone'],
+            'link_ig'        => $param['link_ig'],
+            'link_wa'        => $param['link_wa'],
+            'outlet_owner'   => $param['outlet_owner'],
+            'note'           => $param['note'],
+        ];
+
+        $file_photo = $request->file('outlet_image');
+
+        // Kalo pas diedit gambar diganti / masukin gambar
+        $str = rand();
+        $random_str = md5($str);
+        if ($file_photo) {
+            $outlet = Outlet::where('slug',$slug)->first();
+            File::delete('backend/images/outlets/' . $outlet->outlet_image);
+            $filename = $random_str . $file_photo->getClientOriginalName();
+            $data['outlet_image'] = $filename; // Update field photo
+
+            $file_photo->move('backend/images/outlets/', $filename);
+        }
+
+        // upload file
+        DB::table('outlets')->where('slug', '=', $slug)->update($data);
+        return redirect()->route('outlet.index')->with(['status' => 'Data Berhasil Diupdate!']);
     }
 
     /**

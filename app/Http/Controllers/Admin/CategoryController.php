@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use App\Models\ProductCategory;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.category.index');
+        $data = DB::select("SELECT c.id, c.category_name, c.updated_at 
+                            FROM product_categories c order by c.id desc
+         ");
+        return view('pages.admin.category.index', ['data' => $data]);
     }
 
     /**
