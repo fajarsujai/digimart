@@ -62,7 +62,7 @@ class OutletController extends Controller
             $filename = $random_str . $file_photo->getClientOriginalName();
             $data['outlet_image'] = $filename; // Update field photo
 
-            $file_photo->move('images/outlet', $filename);
+            $file_photo->move('backend/images/outlet', $filename);
         } else {
             dd("tidak ada image");
         }

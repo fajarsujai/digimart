@@ -56,7 +56,7 @@ class ProductController extends Controller
         if ($files = $request->file('product_image')) {
             foreach ($files as $file) {
                 $name = $random_str . $file->getClientOriginalName();
-                $file->move('images/products', $name);
+                $file->move('backend/images/products', $name);
                 $images[] = $name;
             }
         }
@@ -117,7 +117,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {        
         // // Kalo pas diedit gambar diganti / masukin gambar
-        $file_photo = $request->file('product_images');
+        $file_photo = $request->file('product_image');
         $images = array();
         if ($file_photo) {
             // proses hapus image lama pada server
