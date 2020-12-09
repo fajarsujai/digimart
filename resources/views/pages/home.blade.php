@@ -44,7 +44,7 @@ Digimart | Beranda
                                 @endforeach
                               </div>
                             </div>
-                            <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">{{ $item->outlet_name }}</a>
+                            <div class="ps-shoe__detail"><a class="ps-shoe__name" href="{{ url('detail-toko/'.$item->slug)}}">{{ $item->outlet_name }}</a>
                               <p class="ps-shoe__categories"><a href="#">{{ $item->category_name }}</a></p>
                             </div>
                           </div>
