@@ -1,5 +1,5 @@
 
-    <div class="header--sidebar"></div>
+
     <header class="header">
       <div class="header__top">
         <div class="container-fluid">
@@ -13,7 +13,6 @@
                 </div>
           </div>
         </div>
-      </div>
       <nav class="navigation">
         <div class="container-fluid">
           <div class="navigation__column left">
