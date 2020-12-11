@@ -23,7 +23,12 @@
 
     @yield('content')
 
+    @include('includes.script')
     @stack('prepend-script')
-  @include('includes.script')
+
+    <script src="{{ asset('backend/js/here.js') }}"></script>
+    <script>
+      window.hereApiKey = "{{ env('HERE_API_KEY') }}"
+    </script>
       </body>
 </html>

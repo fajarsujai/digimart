@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Outlet;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+
 
 class ClientDetailController extends Controller
 {
 
     public function outletDetail($slug)
     {
-        $data = DB::select(" SELECT o.outlet_name, o.slug, o.outlet_owner, o.outlet_phone, o.outlet_image, o.note, p.product_description, p.product_images, c.category_name
+        $data = DB::select(" SELECT o.id, o.latitude, o.longitude, o.outlet_name, o.slug, o.outlet_owner, o.outlet_phone, o.outlet_image, o.note, p.product_description, p.product_images, c.category_name
                             FROM outlets o
                             LEFT JOIN products p ON o.id=p.outlet_id
                             LEFT JOIN product_categories c ON p.product_category_id=c.id
@@ -21,10 +23,13 @@ class ClientDetailController extends Controller
         return view('pages.detail-toko',['data'=>$data]);
     }
 
-    // public function outletDetail($slug)
+    public function pdfView()
+    {
+        return view('pages.pdfview');
+    }
+
+    // public function getCurrentLocation()
     // {
-    //     $outlet = Outlet::where([['slug', $slug])->first();
-    //     $otlets = Outlet::where([['id', '!=', $outlet->id])->get();
-    //     return view('pages.detail-toko', compact('outlet', 'outlets'));
+    //     return $
     // }
 }

@@ -58,7 +58,8 @@ DIGIMART | Detail Toko
                   <h5>Toko ini menjual berbagai jenis {{ $data->category_name }} seperti:</h5>
                   <p>{{ $data->product_description }}</p>
                 </div>
-                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{ "https://api.whatsapp.com/send?phone=+".$data->outlet_phone."&text=".urlencode($data->product_description)."%0A%0A".urlencode($data->note) }}" target="_blank">Pesan Sekarang</a>
+                {{-- href="{{ "https://api.whatsapp.com/send?phone=+".$data->outlet_phone."&text=".urlencode($data->product_description)."%0A%0A".urlencode($data->note) }}" --}}
+                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="openDirection({{ $data->latitude }}, {{ $data->longitude }}, {{ $data->id }})" target="_blank">Pesan Sekarang</a>
                   <div class="ps-product__actions"><a href="#"><i class="ps-icon-share"></i></a></div>
                 </div>
               </div>
