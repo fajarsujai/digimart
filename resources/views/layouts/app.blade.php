@@ -18,7 +18,7 @@
 
   </head>
 
-  <body class="ps-loading">
+  <body>
 
 
     @yield('content')
