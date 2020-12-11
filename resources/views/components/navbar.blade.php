@@ -65,7 +65,7 @@
                       </div>
                     </div>
                   </li>
-                  <li class="menu-item"><a href="about.html">Tentang Kami</a></li>
+                  <li class="menu-item"><a href="{{ route('tentang-kami') }}">Tentang Kami</a></li>
                 </ul>
           </div>
           <div class="navigation__column right">

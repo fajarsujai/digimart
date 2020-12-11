@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-Digimart | Beranda
+DEEANTAR | Beranda
 @endsection
 
 @section('content')
 
-    <x-navbar></x-navbar>
+    <x-navbar>
+    </x-navbar>
     <x-headline></x-headline>
     <x-hero></x-hero>
     <main class="ps-main">
@@ -15,19 +16,20 @@ Digimart | Beranda
           <div id="features" class="ps-section__header mb-50">
             <h3  class="ps-section__title" data-mask="Daftar Toko">- Daftar Toko</h3>
             <ul class="ps-masonry__filter">
-              <li class="current"><a href="#" data-filter="*">Semua <sup>8</sup></a></li>
-              <li><a href="#" data-filter=".vegetables">Sayuran <sup>3</sup></a></li>
-              <li><a href="#" data-filter=".meat">Daging <sup>1</sup></a></li>
-              <li><a href="#" data-filter=".seasoning">Bumbu <sup>2</sup></a></li>
-              <li><a href="#" data-filter=".fruit">Buah-Buahan <sup>2</sup></a></li>
+            <li class="current"><a href="#" data-filter="*">Semua <sup>{{$categories}}</sup></a></li>
+
+            <li><a href="#" data-filter=".Sayuran">Sayuran</a></li>
+              <li><a href="#" data-filter=".Daging">Daging</a></li>
+              <li><a href="#" data-filter=".Bumbu">Bumbu</a></li>
+              <li><a href="#" data-filter=".Buah">Buah-Buahan</a></li>
             </ul>
           </div>
           <div class="ps-section__content pb-50">
             <div class="masonry-wrapper" data-col-md="4" data-col-sm="2" data-col-xs="1" data-gap="30" data-radio="100%">
               <div class="ps-masonry">
-                @foreach ($data as $item)            
+                @foreach ($data as $item)
                   <div class="grid-sizer"></div>
-                  <div class="grid-item vegetables">
+                  <div class="grid-item {{ $item->category_name }}">
                     <div class="grid-item__content-wrapper">
                       <div class="ps-shoe mb-30">
                         <div class="ps-shoe__thumbnail">
@@ -39,7 +41,7 @@ Digimart | Beranda
                           <div class="ps-shoe__content">
                             <div class="ps-shoe__variants">
                               <div class="ps-shoe__variant normal">
-                                @foreach ($images as $image)                          
+                                @foreach ($images as $image)
                                 <img src="{{ url('backend/images/products/'.$image) }}" alt="">
                                 @endforeach
                               </div>

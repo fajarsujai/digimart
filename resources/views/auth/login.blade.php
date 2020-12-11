@@ -1,7 +1,7 @@
 @extends('layouts.admin.app', ['class' => 'bg-default'])
 
 @section('title')
-Digimart | Login Page
+DEEANTAR | Login Page
 @endsection
 
 @section('content')

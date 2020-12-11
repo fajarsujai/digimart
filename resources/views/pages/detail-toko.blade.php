@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-DIGIMART | Detail Toko
+DEEANTAR | {{ $data->outlet_name }}
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ DIGIMART | Detail Toko
                 </div>
           </div>
         </div>
-      </div>   
+      </div>
       <div class="ps-product--detail pt-60">
         <div class="ps-container">
           <div class="row">
@@ -23,12 +23,12 @@ DIGIMART | Detail Toko
               <div class="ps-product__thumbnail">
                 <div class="ps-product__preview">
                   <div class="ps-product__variants">
-                    
+
                     <div class="item"><img src="{{ asset('backend/images/outlets/'.$data->outlet_image) }}" alt=""></div>
                     @php
                         $images = explode(",",$data->product_images)
                     @endphp
-                    @foreach ($images as $image)                        
+                    @foreach ($images as $image)
                       <div class="item"><img src="{{ asset('backend/images/products/'.$image) }}" alt=""></div>
                     @endforeach
                   </div>
@@ -36,19 +36,19 @@ DIGIMART | Detail Toko
                     {{-- <img src="{{ asset('frontend') }}/images/toko/sayuran/toko1/toko1.png" alt=""><i class="fa fa-play"></i></a> --}}
                 </div>
                 <div class="ps-product__image">
-                  <div class="item"><img class="zoom" src="{{ asset('backend/images/outlets/'.$data->outlet_image) }}" alt="" data-zoom-image="{{ asset('frontend') }}/images/toko1/toko1.png"></div>
-                  @foreach ($images as $image)                        
-                      <div class="item"><img class="zoom" src="{{ asset('backend/images/products/'.$image) }}" alt="" data-zoom-image="{{ asset('frontend') }}/images/toko/sayuran/toko1/toko1-detail-1.png"></div>
+                  <div class="item"><img class="zoom" src="{{ asset('backend/images/outlets/'.$data->outlet_image) }}" alt="" data-zoom-image="{{ asset('backend/images/outlets/'.$data->outlet_image) }}"></div>
+                  @foreach ($images as $image)
+                      <div class="item"><img class="zoom" src="{{ asset('backend/images/products/'.$image) }}" alt="" data-zoom-image="{{ asset('backend/images/products/'.$image) }}"></div>
                   @endforeach
                 </div>
               </div>
               <div class="ps-product__thumbnail--mobile">
-                <div class="ps-product__main-img"><img src="{{ asset('backend/images/outlets/'.$data->outlet_image) }}" alt=""></div>
-                <div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on">
-                  @foreach ($images as $image)   
+                <div class="ps-product__main-img"><img  class="zoom"  src="{{ asset('backend/images/outlets/'.$data->outlet_image) }}" alt="" data-zoom-image="{{ asset('backend/images/outlets/'.$data->outlet_image) }}"></div>
+                @foreach ($images as $image)
+                <div class="ps-product__preview" style="margin-bottom: 10px;">
                   <img src="{{ asset('backend/images/products/'.$image) }}" alt="">
-                  @endforeach
                 </div>
+                @endforeach
               </div>
               <div class="ps-product__info">
                 <h1>{{ $data->outlet_name }} ({{ $data->outlet_owner }})</h1>
@@ -58,9 +58,14 @@ DIGIMART | Detail Toko
                   <h5>Toko ini menjual berbagai jenis {{ $data->category_name }} seperti:</h5>
                   <p>{{ $data->product_description }}</p>
                 </div>
+<<<<<<< HEAD
                 {{-- href="{{ "https://api.whatsapp.com/send?phone=+".$data->outlet_phone."&text=".urlencode($data->product_description)."%0A%0A".urlencode($data->note) }}" --}}
                 <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="openDirection({{ $data->latitude }}, {{ $data->longitude }}, {{ $data->id }})" target="_blank">Pesan Sekarang</a>
                   <div class="ps-product__actions"><a href="#"><i class="ps-icon-share"></i></a></div>
+=======
+                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{ "https://api.whatsapp.com/send?phone=+".$data->outlet_phone."&text=".urlencode($data->product_description)."%0A%0A".urlencode($data->note) }}" target="_blank">Pesan Sekarang</a>
+                  <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{ url('https://api.whatsapp.com/send?text=http://deeantar.decodev.id/detail-toko/'.$data->slug)}}" data-action="share/whatsapp/share">Bagikan Toko</a></div>
+>>>>>>> 5d6edc39b4c63b9c71897d504fdee3d1cbd2b638
                 </div>
               </div>
               <div class="clearfix"></div>

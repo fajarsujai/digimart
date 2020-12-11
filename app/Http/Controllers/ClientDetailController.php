@@ -17,19 +17,9 @@ class ClientDetailController extends Controller
                             FROM outlets o
                             LEFT JOIN products p ON o.id=p.outlet_id
                             LEFT JOIN product_categories c ON p.product_category_id=c.id
-                            WHERE o.slug = '".$slug."'
+                            WHERE o.slug = '" . $slug . "'
          ");
-        $data = $data[0];        
-        return view('pages.detail-toko',['data'=>$data]);
+        $data = $data[0];
+        return view('pages.detail-toko', ['data' => $data]);
     }
-
-    public function pdfView()
-    {
-        return view('pages.pdfview');
-    }
-
-    // public function getCurrentLocation()
-    // {
-    //     return $
-    // }
 }

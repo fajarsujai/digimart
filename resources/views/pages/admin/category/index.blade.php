@@ -1,7 +1,7 @@
 @extends('layouts.admin.app', ['activePage' => 'table', 'titlePage' => __('Tabel Daftar Paket')])
 
 @section('title')
-Digimart | Category Page
+DEEANTAR | Category Page
 @endsection
 
 @section('content')
@@ -40,9 +40,9 @@ Digimart | Category Page
                   <th scope="col">Action</th>
                 </tr>
               </thead>
-              <tbody class="list">  
+              <tbody class="list">
                 @php $i=1; @endphp
-                  @foreach($data as $key => $value)                                        
+                  @foreach($data as $key => $value)
                   <tr>
                       <th>{{ $i }}</th>
                       <th>{{ $value->category_name }}</th>

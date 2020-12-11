@@ -1,7 +1,7 @@
 @extends('layouts.admin.app', ['activePage' => 'table', 'titlePage' => __('Tabel Daftar Paket')])
 
 @section('title')
-Digimart | Create Category Page
+DEEANTAR | Create Category Page
 @endsection
 
 @section('content')
