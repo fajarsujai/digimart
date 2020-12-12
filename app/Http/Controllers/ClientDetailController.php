@@ -25,6 +25,16 @@ class ClientDetailController extends Controller
 
     public function pdfView($id)
     {
-        return view('pages.pdfview',['id'=>$id]);
+        $data = DB::select(" SELECT o.id, o.latitude, o.longitude, o.outlet_name, o.outlet_owner, o.outlet_phone, o.outlet_image, o.note, p.product_description, p.product_images, c.category_name
+                            FROM outlets o
+                            LEFT JOIN products p ON o.id=p.outlet_id
+                            LEFT JOIN product_categories c ON p.product_category_id=c.id
+         ");
+        $data = $data[0];
+        return view(
+            'pages.pdfview',
+            ['id' => $id],
+            ['data' => $data]
+        );
     }
 }
