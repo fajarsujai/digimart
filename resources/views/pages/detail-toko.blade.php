@@ -58,14 +58,11 @@ DEEANTAR | {{ $data->outlet_name }}
                   <h5>Toko ini menjual berbagai jenis {{ $data->category_name }} seperti:</h5>
                   <p>{{ $data->product_description }}</p>
                 </div>
-<<<<<<< HEAD
                 {{-- href="{{ "https://api.whatsapp.com/send?phone=+".$data->outlet_phone."&text=".urlencode($data->product_description)."%0A%0A".urlencode($data->note) }}" --}}
-                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="openDirection({{ $data->latitude }}, {{ $data->longitude }}, {{ $data->id }})" target="_blank">Pesan Sekarang</a>
+                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="openDirection({{ $data->latitude }}, {{ $data->longitude }}, {{ $data->id }})">Pesan Sekarang</a>
                   <div class="ps-product__actions"><a href="#"><i class="ps-icon-share"></i></a></div>
-=======
-                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{ "https://api.whatsapp.com/send?phone=+".$data->outlet_phone."&text=".urlencode($data->product_description)."%0A%0A".urlencode($data->note) }}" target="_blank">Pesan Sekarang</a>
                   <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{ url('https://api.whatsapp.com/send?text=http://deeantar.decodev.id/detail-toko/'.$data->slug)}}" data-action="share/whatsapp/share">Bagikan Toko</a></div>
->>>>>>> 5d6edc39b4c63b9c71897d504fdee3d1cbd2b638
+
                 </div>
               </div>
               <div class="clearfix"></div>

@@ -7,7 +7,8 @@ Route::get('/', 'HomeController@index')
 
 Route::get('/detail-toko/{slug}', 'ClientDetailController@outletDetail');
 Route::get('/tentang-kami', 'HomeController@about')->name('tentang-kami');
-Route::get('/pdfview','ClientDetailController@pdfView');
+Route::get('/pdfview/{id}','ClientDetailController@pdfView');
+
 
 Auth::routes();
 

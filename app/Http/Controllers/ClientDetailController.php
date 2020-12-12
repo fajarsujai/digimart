@@ -22,4 +22,9 @@ class ClientDetailController extends Controller
         $data = $data[0];
         return view('pages.detail-toko', ['data' => $data]);
     }
+
+    public function pdfView($id)
+    {
+        return view('pages.pdfview',['id'=>$id]);
+    }
 }
