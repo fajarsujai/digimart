@@ -14,7 +14,7 @@ Deeantar.com
                 <div class="card-header">Deeantar : </div>
 
                 <div class="card-body">
-                    <div style="height: 500px" id="mapContainer"></div>
+                    <div style="height: 500px;display:none" id="mapContainer"></div>
                 </div>
             </div>
             <div class="card mb-3">

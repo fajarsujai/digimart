@@ -114,15 +114,18 @@ DEEANTAR | {{ $data->outlet_name }}
 @endsection
 
 @push('script')
+
 <script type="text/javascript" src="{{ asset('frontend') }}/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 
-  <script>
-  $(function() {
-    $( "#dialog" ).dialog();
-  });
+  <script type="text/javascript">
+    var outlet_phone = "<?= $data->outlet_phone ?>";
+    var product_description = "<?= $data->product_description ?>";
+    var note = "<?= $data->note ?>";
+    
   </script>
+  <script type="text/javascript" src="{{ asset('frontend/scripts/here.js') }}"></script>
 @endpush
 

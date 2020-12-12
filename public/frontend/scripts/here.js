@@ -1,4 +1,4 @@
-if (navigator.geolocation) {
+if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
         localCoord = position.coords;
         objLocalCoord = {
@@ -23,103 +23,6 @@ if (navigator.geolocation) {
                     pixelRatio: window.devicePixelRatio || 1
                 });
             window.addEventListener('resize', () => map.getViewPort().resize());
-
-        let ui = H.ui.UI.createDefault(map, defaultLayers);
-        let mapEvents = new H.mapevents.MapEvents(map);
-        let behavior = new H.mapevents.Behavior(mapEvents);
-
-        // Draggable Marker Function
-        function addDragableMarker(map, behavior) {
-            let inputLat = document.getElementById('lat');
-            let inputLng = document.getElementById('lng');
-
-            if (inputLat.value != '' && inputLng.value != '') {
-                objLocalCoord = {
-                    lat: inputLat.value,
-                    lng: inputLng.value
-                }
-            }
-
-            let marker = new H.map.Marker(objLocalCoord, {
-                volatility: true
-            })
-
-            marker.draggable = true;
-            map.addObject(marker);
-
-            // disable the default draggability of the underlying map
-            // and calculate the offset between mouse and target's position
-            // when starting to drag a marker object:
-            map.addEventListener('dragstart', function(ev) {
-                let target = ev.target,
-                    pointer = ev.currentPointer;
-                if (target instanceof H.map.Marker) {
-                    let targetPosition = map.geoToScreen(target.getGeometry());
-                    target['offset'] = new H.math.Point(
-                        pointer.viewportX - targetPosition.x, pointer.viewportY - targetPosition.y
-                    );
-                    behavior.disable();
-                }
-            }, false);
-
-            // Listen to the drag event and move the position of the marker
-            // as necessary
-            map.addEventListener('drag', function(ev) {
-                let target = ev.target,
-                    pointer = ev.currentPointer;
-                if (target instanceof H.map.Marker) {
-                    target.setGeometry(
-                        map.screenToGeo(
-                            pointer.viewportX - target['offset'].x, pointer.viewportY - target['offset'].y
-                        )
-                    );
-                }
-            }, false);
-
-            // re-enable the default draggability of the underlying map
-            // when dragging has completed
-            map.addEventListener('dragend', function(ev) {
-                let target = ev.target;
-                if (target instanceof H.map.Marker) {
-                    behavior.enable();
-                    let resultCoord = map.screenToGeo(
-                        ev.currentPointer.viewportX,
-                        ev.currentPointer.viewportY
-                    );
-                    // console.log(resultCoord)
-                    inputLat.value = resultCoord.lat.toFixed(5);
-                    inputLng.value = resultCoord.lng.toFixed(5);
-                }
-            }, false);
-        }
-
-        if (window.action == "submit") {
-            addDragableMarker(map, behavior);
-        }
-
-        // Browse location codespace
-        let spaces = [];
-        const fetchSpaces = function (latitude, longitude, radius) {
-            return new Promise(function (resolve, reject) {
-                resolve(
-                    fetch(`/api/spaces?lat=${latitude}&lng=${longitude}&rad=${radius}`)
-                    .then((res) => res.json())
-                    .then(function(data) {
-                        data.forEach(function (value, index) {
-                            let marker = new H.map.Marker({
-                                lat: value.latitude, lng: value.longitude
-                            });
-                            spaces.push(marker);
-                        })
-                    })
-                )
-            })
-        }
-
-        function clearSpace() {
-            map.removeObjects(spaces);
-            spaces = [];
-        }
 
         function init(latitude, longitude, radius) {
             clearSpace();
@@ -161,7 +64,7 @@ if (navigator.geolocation) {
                 onError
             )
         }
-       
+
         function onSuccess(result) {
             route = result.response.route[0];
 
@@ -238,14 +141,33 @@ if (navigator.geolocation) {
             });
         }
 
+        function formatRupiah(angka, prefix){
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split   		= number_string.split(','),
+            sisa     		= split[0].length % 3,
+            rupiah     		= split[0].substr(0, sisa),
+            ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+         
+            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+            if(ribuan){
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+         
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        }
+
         function addSummaryToPanel(summary){
+            const ongkir = (summary.distance/1000)*2000;
             const sumDiv = document.getElementById('summary');
             const markup = `
                 <ul>
-                    <li>Total Distance: ${summary.distance/1000}Km</li>
-                    <li>Travel Time: ${summary.travelTime.toMMSS()} (in current traffic)</li>
+                    <li>Total Jarak  : ${summary.distance/1000} Km</li>
+                    <li>Biaya Ongkir : ${formatRupiah(ongkir.toString(),'Rp.')}</li>
                 </ul>
-            `;
+                    `;
+                    // <li>Waktu Tempuh: ${summary.travelTime.toMMSS()} (dalam situasi lalu lintas saat ini)</li>
             sumDiv.innerHTML = markup;
         }
 
@@ -258,15 +180,15 @@ if (navigator.geolocation) {
         }
 
 
-    }, showError)    
+    }, showError)
 
     var deny = false;
     function showError(error) {
         switch(error.code) {
           case error.PERMISSION_DENIED:
             this.deny = true;
-            console.log(deny);  
-          // console.log("User denied the request for Geolocation.");            
+            console.log(deny);
+          // console.log("User denied the request for Geolocation.");
             break;
           case error.POSITION_UNAVAILABLE:
             // x.innerHTML = "Location information is unavailable."
@@ -287,13 +209,31 @@ if (navigator.geolocation) {
     objLocalCoord = null;
     function openDirection(lat, lng, id) {
         if (objLocalCoord != null) {
-            window.open(`/pdfview/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`, "_self");
-        }else if (deny ==true){
+          window.open(`/pdfview/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`, "_self");
+        //   var accessToken = "960b48fb4ec9c1363d74c216f7377b1682ab9027";
+        //   var params = {
+        //       "long_url" : url_invoice           
+        //   };
+        //   $.ajax({
+        //       url: "https://api-ssl.bitly.com/v4/shorten",
+        //       cache: false,
+        //       dataType: "json",
+        //       method: "POST",
+        //       contentType: "application/json",
+        //       beforeSend: function (xhr) {
+        //           xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
+        //       },
+        //       data: JSON.stringify(params)
+        //   }).done(function(data) {
+        //       console.log(data.link);
+        //       window.open( "https://api.whatsapp.com/send?phone=+" + outlet_phone + "&text=" + encodeURI(product_description) + "%0A%0A"  + encodeURI(note) + "%0A%0A" + data.link);
+        //   }).fail(function(data) {
+        //       console.log(data);
+        //   });            
+        }else if(deny==true){
             document.getElementById("dialog").style.display = "block";
+            }
         }
-    }
-
-    
-} else {
-    console.error("Geolocation is not suppported by this browser!");
-}
+  } else {
+      console.error("Geolocation is not suppported by this browser!");
+  }
