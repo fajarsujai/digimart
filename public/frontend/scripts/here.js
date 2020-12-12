@@ -161,7 +161,7 @@ if (navigator.geolocation) {
                 onError
             )
         }
-
+       
         function onSuccess(result) {
             route = result.response.route[0];
 
@@ -258,27 +258,15 @@ if (navigator.geolocation) {
         }
         
 
-    }, showError)
-    objLocalCoord = null;
+    }, showError)    
 
-    function deleteAllCookies() {
-        var cookies = document.cookie.split(";");
     
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i];
-            var eqPos = cookie.indexOf("=");
-            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        }
-       
-        return  history.go(-1);
-    }
 
     function showError(error) {
         switch(error.code) {
           case error.PERMISSION_DENIED:
-            // x.innerHTML = "User denied the request for Geolocation."
-            console.log("User denied the request for Geolocation.");
+            // console.log("User denied the request for Geolocation.");
+            document.getElementById("overlay").style.display = "block";
             break;
           case error.POSITION_UNAVAILABLE:
             // x.innerHTML = "Location information is unavailable."
@@ -296,6 +284,7 @@ if (navigator.geolocation) {
       }
 
     // Open url direction
+    objLocalCoord = null;
     function openDirection(lat, lng, id) {
         if (objLocalCoord != null) {
             window.open(`/pdfview/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`, "_self");            
@@ -304,29 +293,8 @@ if (navigator.geolocation) {
             $.removeCookie('the_cookie', { path: '/' });                      
         }
     }
+
+    
 } else {
     console.error("Geolocation is not suppported by this browser!");
 }
-
-
-
-
-navigator.permissions.query({
-    name: 'geolocation'
-}).then(function(result) {
-    if (result.state == 'granted') {
-        report(result.state);
-        geoBtn.style.display = 'none';
-    } else if (result.state == 'prompt') {
-        report(result.state);
-        geoBtn.style.display = 'none';
-
-        navigator.geolocation.getCurrentPosition(revealPosition, positionDenied, geoSettings);
-    } else if (result.state == 'denied') {
-        report(result.state);
-        geoBtn.style.display = 'inline';
-    }
-    result.onchange = function() {
-        report(result.state);
-    }
-});
