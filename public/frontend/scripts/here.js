@@ -256,11 +256,26 @@ if (navigator.geolocation) {
                 return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
             }
         }
-        
+
 
     }, showError)    
 
+<<<<<<< HEAD
     
+=======
+    function deleteAllCookies() {
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            var eqPos = cookie.indexOf("=");
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+
+        return  history.go(-1);
+    }
+>>>>>>> b118e3e8051cbc4c00a734fe6ade681ce4e7ca39
 
     function showError(error) {
         switch(error.code) {
@@ -281,16 +296,31 @@ if (navigator.geolocation) {
             console.log("An unknown error occurred.");
             break;
         }
-      }
+    }
+
+        // function dialog(){
+        //     const sumDiv = document.getElementById('dialog');
+        //     const markup = `
+        //         <div class="alert-image">
+        //             <div class="arrow"></div>
+        //                 <h2>Nyalakan lokasi
+        //                     <div class="ico"></div>
+        //                     <span>terlebih dahulu</span></h2>
+        //                 <div class="alert-image__ornament"></div>
+        //         </div>
+        //     `;
+        //     sumDiv.innerHTML = markup;
+        // }
 
     // Open url direction
     objLocalCoord = null;
     function openDirection(lat, lng, id) {
         if (objLocalCoord != null) {
-            window.open(`/pdfview/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`, "_self");            
+            window.open(`/pdfview/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`, "_self");
         }else{
-            confirm('Aktifkan lokasi browser anda untuk bisa order');  
-            $.removeCookie('the_cookie', { path: '/' });                      
+            // confirm('Aktifkan lokasi browser anda untuk bisa order');
+            // $.removeCookie('the_cookie', { path: '/' });
+            // dialog();
         }
     }
 
