@@ -1139,6 +1139,7 @@ body {
 .alert-image {
   /* display: none; */
   position: fixed;
+  display: none;
   top: 0;
   left: 0;
   width: 100%;

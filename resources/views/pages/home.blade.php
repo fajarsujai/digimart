@@ -59,7 +59,6 @@ DEEANTAR | Beranda
             </div>
         </div>
       </div>
-      <div id="overlay"></div>
     </main>
     <x-footer></x-footer>
 @endsection
