@@ -8,6 +8,13 @@ DEEANTAR | {{ $data->outlet_name }}
         <x-navbar></x-navbar>
         <x-headline></x-headline>
         <main class="ps-main">
+        <div class="alert-image" id="dialog" >
+            <div class="arrow"></div>
+                <h2>Nyalakan lokasi
+                    <div class="ico"></div>
+                    <span>terlebih dahulu</span></h2>
+                <div class="alert-image__ornament"></div>
+        </div>
       <div class="test">
         <div class="container">
           <div class="row">
@@ -60,7 +67,6 @@ DEEANTAR | {{ $data->outlet_name }}
                 </div>
                 {{-- href="{{ "https://api.whatsapp.com/send?phone=+".$data->outlet_phone."&text=".urlencode($data->product_description)."%0A%0A".urlencode($data->note) }}" --}}
                 <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="openDirection({{ $data->latitude }}, {{ $data->longitude }}, {{ $data->id }})">Pesan Sekarang</a>
-                  <div class="ps-product__actions"><a href="#"><i class="ps-icon-share"></i></a></div>
                   <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{ url('https://api.whatsapp.com/send?text=http://deeantar.decodev.id/detail-toko/'.$data->slug)}}" data-action="share/whatsapp/share">Bagikan Toko</a></div>
 
                 </div>
@@ -107,7 +113,16 @@ DEEANTAR | {{ $data->outlet_name }}
     <x-footer></x-footer>
 @endsection
 
-@push('addon-script')
+@push('script')
 <script type="text/javascript" src="{{ asset('frontend') }}/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+  <script>
+  $(function() {
+    $( "#dialog" ).dialog();
+  });
+  </script>
 @endpush
 
