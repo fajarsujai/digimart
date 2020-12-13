@@ -33,7 +33,9 @@
     @include('includes.script')
     @stack('script')
 
-    {{-- <script src="{{ asset('frontend/scripts/here.js') }}"></script> --}}
+    {{-- @include('includes.scripthere') --}}
+    <script type="text/javascript" src="{{ asset('frontend/scripts/here.js') }}"></script>
+
     <script>
       window.hereApiKey = "{{ env('HERE_API_KEY') }}"
     </script>
