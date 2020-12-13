@@ -16,7 +16,6 @@
     @stack('prepend-style')
     @include('includes.style')
 
-
     <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
@@ -32,10 +31,8 @@
 
     @include('includes.script')
     @stack('script')
-
     {{-- @include('includes.scripthere') --}}
     <script type="text/javascript" src="{{ asset('frontend/scripts/here.js') }}"></script>
-
     <script>
       window.hereApiKey = "{{ env('HERE_API_KEY') }}"
     </script>

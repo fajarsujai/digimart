@@ -1183,7 +1183,6 @@ alert-image .closebtn:hover {
 }
 
 .alert-image .popup-blocked {
-  margin: 20px 106px 20px 0px;
   float: left;
   background: url("../images/ornament/popup-blocked.png") center no-repeat;
   background-size: 100%;
@@ -1198,15 +1197,15 @@ alert-image .closebtn:hover {
 
 @media (max-width: 991px) {
   .alert-image .popup-blocked {
-    width: 550px;
-    height: 550px;
+    width: 610px;
+    height: 610px;
   }
 }
 
 @media (max-width: 575px) {
   .alert-image .popup-blocked {
-    width: 550px;
-    height: 550px;
+    width: 610px;
+    height: 610px;
   }
 }
 
@@ -6438,6 +6437,18 @@ button.ps-btn--gray:before {
   background-color: #eee;
   height: 50px;
   overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .header-services {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .header-services {
+    margin-top: 20px;
+  }
 }
 
 .menu--active {

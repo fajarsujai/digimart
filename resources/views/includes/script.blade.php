@@ -21,6 +21,6 @@
 <script type="text/javascript" src="{{ asset('frontend') }}/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
 <script type="text/javascript" src="{{ asset('frontend') }}/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
 <script type="text/javascript" src="{{ asset('frontend') }}/plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <!-- Custom scripts-->
     <script type="text/javascript" src="{{ asset('frontend') }}/scripts/main.js"></script>
