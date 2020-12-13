@@ -65,7 +65,7 @@ DEEANTAR | {{ $data->outlet_name }}
                 </div>
                 {{-- href="{{ "https://api.whatsapp.com/send?phone=+".$data->outlet_phone."&text=".urlencode($data->product_description)."%0A%0A".urlencode($data->note) }}" --}}
                 <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="openDirection({{ $data->latitude }}, {{ $data->longitude }}, {{ $data->id }})">Pesan Sekarang</a>
-                  <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{ url('https://api.whatsapp.com/send?text=http://deeantar.decodev.id/detail-toko/'.$data->slug)}}" data-action="share/whatsapp/share">Bagikan Toko</a></div>
+                  <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{ url('https://api.whatsapp.com/send?text=https://deeantar.decodev.id/detail-toko/'.$data->slug)}}" data-action="share/whatsapp/share">Bagikan Toko</a></div>
 
                 </div>
               </div>
