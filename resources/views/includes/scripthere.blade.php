@@ -1,4 +1,5 @@
-if(navigator.geolocation) {
+<script type="text/javascript">
+        if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
         localCoord = position.coords;
         objLocalCoord = {
@@ -209,9 +210,9 @@ if(navigator.geolocation) {
     objLocalCoord = null;
     function openDirection(lat, lng, id) {
         if (objLocalCoord != null) {
-             const url_invoice = `http://127.0.0.1:8000/pdfview/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`;
+             const url_invoice = `http://127.0.0.1:8000/pdfview/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`+"_self";
             //  window.open(url_invoice);
-            // console.log(product_description);
+            // console.log(outlet_phone);
             // return false;
         //   window.open(`/pdfview/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`, "_self");
           var accessToken = "960b48fb4ec9c1363d74c216f7377b1682ab9027";
@@ -230,8 +231,7 @@ if(navigator.geolocation) {
               data: JSON.stringify(params)
           }).done(function(data) {
               console.log(data.link);
-            //   window.open( "https://api.whatsapp.com/send?phone=+" + outlet_phone + "&text=" + data.link);
-              window.open( "https://api.whatsapp.com/send?phone=+" + outlet_phone + "&text=" + product_description + "%0A%0A"  + note + "%0A%0A" + data.link);
+              window.open( "https://api.whatsapp.com/send?phone=+" + "{{$data->outlet_phone}}" + "&text=" + "{{urlencode($data->product_description)}}" + "%0A%0A"  + "{{urlencode($data->note)}}" + "%0A%0A" + data.link);
           }).fail(function(data) {
               console.log(data);
           });
@@ -242,3 +242,5 @@ if(navigator.geolocation) {
   } else {
       console.error("Geolocation is not suppported by this browser!");
   }
+
+  </script>

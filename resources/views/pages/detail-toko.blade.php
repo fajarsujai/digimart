@@ -109,6 +109,7 @@ DEEANTAR | {{ $data->outlet_name }}
       </div>
     </main>
     <x-footer></x-footer>
+
 @endsection
 
 @push('script')
@@ -116,11 +117,18 @@ DEEANTAR | {{ $data->outlet_name }}
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-
-  <script>
-  $(function() {
-    $( "#dialog" ).dialog();
-  });
-  </script>
 @endpush
+
+<?php
+    $outlet_phone = $data->outlet_phone;
+    $product_description = urlencode($data->product_description);
+    $note = urlencode($data->note);
+?>
+<script type="text/javascript">
+    var outlet_phone = "<?= $outlet_phone ?>";
+    var product_description = "<?= $product_description ?>";
+    var note = "<?= $note ?>";
+</script>
+<script type="text/javascript" src="{{ asset('frontend/scripts/here.js') }}"></script>
+{{-- @include('includes.scripthere', ['data'=>$data]); --}}
 
