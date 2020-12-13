@@ -15,7 +15,7 @@
                       <footer>
                         <p><strong>Ciasem Subang</strong></p>
                         <p>Email: <a href='mailto:support@store.com'>hello@DEEANTAR.com</a></p>
-                        <p>Phone: 0821-3031-4423</p>
+                        <p>Phone: 0838-1655-2123</p>
                       </footer>
                     </aside>
                   </div>

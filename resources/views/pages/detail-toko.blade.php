@@ -9,11 +9,9 @@ DEEANTAR | {{ $data->outlet_name }}
         <x-headline></x-headline>
         <main class="ps-main">
         <div class="alert-image" id="dialog" >
-            <div class="arrow"></div>
-                <h2>Nyalakan lokasi
-                    <div class="ico"></div>
-                    <span>terlebih dahulu</span></h2>
-                <div class="alert-image__ornament"></div>
+        <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+        <div class="popup-blocked"></div>
+        </div>
         </div>
       <div class="test">
         <div class="container">
