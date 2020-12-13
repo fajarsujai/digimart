@@ -153,22 +153,16 @@ if(navigator.geolocation) {
                 separator = sisa ? '.' : '';
                 rupiah += separator + ribuan.join('.');
             }
+
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
         }
 
-<<<<<<< HEAD
-
-        function addSummaryToPanel(summary) {
-
-=======
         function addSummaryToPanel(summary){
->>>>>>> 804c29c8124497f274a8846390ebb2d3238686ca
             const ongkir = (summary.distance/1000)*2000;
             const sumDiv = document.getElementById('summary');
             const markup = `
                 <ul>
-
                     <li>Total Jarak: <strong>${summary.distance/1000}Km</strong></li>
                     <li>Biaya Ongkir : <strong>${formatRupiah(ongkir.toString(),'Rp.')}</strong></li>
                 </ul>
@@ -241,11 +235,10 @@ if(navigator.geolocation) {
           }).fail(function(data) {
               console.log(data);
           });
-
         }else if(deny==true){
             document.getElementById("dialog").style.display = "block";
             }
-        }else {
+        }
+  } else {
       console.error("Geolocation is not suppported by this browser!");
   }
-
